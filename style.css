@@ -1,0 +1,453 @@
+/* -------------------------------------------------------------------------- */
+/* --- GLOBAIS, RESET E FONTES --- */
+/* -------------------------------------------------------------------------- */
+
+/* Importação de Fontes - Coloque todas aqui */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Se usar Roboto, adicione: 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*/
+
+/* Reset Básico e Box Sizing Universal */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif; /* Fonte principal */
+    background-color: #f4f7f6; /* Fundo suave */
+    color: #333; /* Cor de texto padrão */
+    line-height: 1.6; /* Melhor legibilidade */
+    /* Se o header for fixo, adicione um padding-top aqui igual à altura do header. Ex: */
+    /* padding-top: 80px; */
+}
+
+/* Se o header for fixo, para o scroll suave funcionar corretamente com âncoras: */
+/*
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Igual à altura do header fixo */
+
+*/
+html { /* Mantenha se quiser scroll suave para âncoras, mesmo sem header fixo */
+    scroll-behavior: smooth;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* --- ANIMAÇÕES --- */
+/* -------------------------------------------------------------------------- */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Delays para animação escalonada - adicione as classes .delay-X no HTML */
+.delay-1 { animation-delay: 0.1s !important; } /* !important para garantir prioridade se necessário */
+.delay-2 { animation-delay: 0.2s !important; }
+.delay-3 { animation-delay: 0.3s !important; }
+.delay-4 { animation-delay: 0.4s !important; }
+.delay-5 { animation-delay: 0.5s !important; }
+.delay-6 { animation-delay: 0.6s !important; }
+.delay-7 { animation-delay: 0.7s !important; }
+/* Adicione mais classes de delay conforme necessário */
+
+
+/* -------------------------------------------------------------------------- */
+/* --- HEADER --- */
+/* -------------------------------------------------------------------------- */
+.header {
+    background: linear-gradient(330deg, rgba(2, 0, 36, 1) 0%, rgba(9, 106, 121, 1) 35%, rgba(9, 9, 121, 1) 100%);
+    min-height: 60vh; /* Altura mínima, permitindo que cresça se o conteúdo precisar */
+    display: flex; /* Para centralizar o conteúdo verticalmente */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px 20px; /* Padding generoso */
+    font-weight: bold; /* Aplicado a todo texto no header, pode ser refinado */
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    color: #fff; /* Cor de texto padrão para o header */
+}
+
+.header h1 {
+    font-size: 3em;
+    margin-bottom: 15px; /* Reduzido */
+}
+
+.header .subtitle {
+    margin-bottom: 30px;
+    font-size: 1.5em;
+    font-weight: 400; /* Mais leve que o h1 */
+    opacity: 0.9;
+    max-width: 600px; /* Para não ficar muito largo em telas grandes */
+} 
+
+.header .header-links {
+    display: flex; /* Coloca os links em linha */
+    flex-wrap: wrap; /* Permite quebrar para a linha de baixo se não couberem */
+    justify-content: center; /* Centraliza o grupo de links */
+    gap: 15px; /* Espaçamento entre os links */
+}
+
+.header .header-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 10px 25px;
+    border-radius: 5px; 
+    background-color: rgba(255, 255, 255, 0.15);
+    font-size: 1.1em;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header .header-links a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px); /* Leve efeito ao passar o mouse */
+}
+
+/* -------------------------------------------------------------------------- */
+/* --- TÍTULOS DE SEÇÃO GERAIS --- */
+/* -------------------------------------------------------------------------- */
+.section-title {
+    color: #2c3e50; /* Cor escura para os títulos */
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 60px; /* Mais espaço acima */
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+/* -------------------------------------------------------------------------- */
+/* --- SEÇÃO PROJETOS --- */
+/* -------------------------------------------------------------------------- */
+.projetos-secao {
+    padding: 20px ;
+}
+
+.projetos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin: 0 auto;
+    max-width: 1500px;
+    padding: 0 15px; /* Padding lateral para o container */
+}
+
+.caixa { /* Card de projeto */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 360px; /* Ajustado para melhor encaixe (ex: 3 por linha em 1200px com gaps) */
+    background-color: #ffffff;
+    border-radius: 8px; /* Suavizado */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+    overflow: hidden; /* Essencial para a imagem com border-radius e object-fit */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.caixa:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.caixa_img {
+    width: 100%; /* Imagem ocupa toda a largura do card */
+    height: 220px; /* Altura para a imagem. Ajuste conforme preferir. */
+    object-fit: cover; /* Imagem cobre a área, mantendo proporção e cortando excesso */
+    /* border-radius não é necessário aqui se .caixa tem overflow:hidden e a imagem é o primeiro filho */
+}
+
+.caixa_texto {
+    padding: 20px 25px 25px; /* Ajustado padding */
+    text-align: left;
+    font-size: 1em;
+    color: #444; /* Cor de texto do card um pouco mais clara */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ocupa espaço restante, empurrando o botão para baixo */
+}
+
+.caixa_texto h3 {
+    font-size: 1.4em; /* Ajustado */
+    margin-bottom: 10px; /* Reduzido */
+    font-weight: 700; /* Peso da fonte PT Sans */
+    color: #096a79; /* Usando uma das cores do gradiente do header */
+}
+
+.caixa_texto p {
+    margin-bottom: 20px;
+    flex-grow: 1; /* Empurra o botão para o final do card */
+} 
+
+.caixa_texto .btn { /* Estilo para botões Bootstrap */
+    background-color: #096a79;
+    border-color: #096a79;
+    /* color: #fff; (já definido pelo Bootstrap .btn-primary) */
+    align-self: flex-start; /* Botão alinhado à esquerda */
+    padding: 0.5rem 1rem; /* Ajuste o padding do Bootstrap se necessário */
+}
+
+.caixa_texto .btn:hover {
+    background-color: #07525e;
+    border-color: #07525e;
+}
+
+/* -------------------------------------------------------------------------- */
+/* --- SEÇÃO CONTATO --- */
+/* -------------------------------------------------------------------------- */
+.contato-secao {
+    align-items: center;
+    text-align:center;
+    padding: 60px;/* Mais padding vertical */
+    margin: 10px; /* Margem vertical e centralizar */
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    background: linear-gradient(330deg,rgba(2, 0, 36, 1) 0%, rgba(9, 106, 121, 1) 35%, rgba(9, 9, 121, 1) 100%);
+    max-width: 1400px;
+    color: #fff; /* Texto padrão da seção de contato */
+}
+
+.contato-secao .section-title {
+    color: #fff; /* Título branco para contraste */
+    margin-bottom: 50px; /* Mais espaço abaixo do título */
+}
+
+.contato_cards_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* Cards com mesma altura na linha */
+    justify-content: center;
+    gap: 30px;
+}
+
+.contato_card_item {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 30px 25px; /* Mais padding interno */
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 320px; /* Largura dos cards de contato */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.contato_card_item:hover {
+    transform: translateY(-5px);
+}
+
+.contato_card_item .social_icon {
+    width: 100%; /* Ajustado */
+    height: 300px;       margin-bottom: 15px;
+    object-fit: cover;
+
+}
+
+.contato_card_item h3 {
+    font-size: 1.6em; /* Ajustado */
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.contato_card_item p {
+    margin-bottom: 25px; /* Mais espaço antes do botão */
+    color: #e0e0e0;   
+    font-size: 0.95em; /* Ajustado */
+    flex-grow: 1; /* Empurra o botão para baixo */
+    max-width: 250px; /* Para não ficar muito largo dentro do card */
+}
+
+.contato_card_item .btn { /* Botões dos cards de contato */
+    color: #020024;
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
+    font-weight: bold; /* Deixar o texto do botão mais forte */
+    padding: 0.6rem 1.5rem; /* Padding do botão */
+}
+
+.contato_card_item .btn:hover {
+    background-color: #ffffff; /* Hover mais claro */
+    color: #020024;
+}
+
+/* -------------------------------------------------------------------------- */
+/* --- FOOTER --- */
+/* -------------------------------------------------------------------------- */
+.footer {
+    background-color: #020024;
+    color: #ccc;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px; /* Mais espaço acima do footer */
+    font-size: 0.9em;
+}
+
+/* -------------------------------------------------------------------------- */
+/* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
+/* -------------------------------------------------------------------------- */
+
+/* Tablets e telas menores (Bootstrap 'lg' breakpoint: <992px) */
+@media (max-width: 991.98px) {
+    .header h1 {
+        font-size: 2.6em;
+    }
+    .header .subtitle {
+        font-size: 1.3em;
+    }
+
+    .projetos-container {
+        gap: 25px;
+    }
+    .caixa {
+        max-width: calc(50% - 12.5px); /* 2 cards por linha, considerando o gap */
+                                     /* (100% / 2) - (gap / 2)  ->  50% - (25px/2) */
+        min-height: auto; /* Altura automática para tablet */
+    }
+    /* Para forçar 1 card por linha em tablets se preferir: */
+    /* .caixa { max-width: 450px; } */
+}
+
+
+/* Celulares Grandes / Tablets Retrato (Bootstrap 'md' breakpoint: <768px) */
+@media (max-width: 767.98px) {
+    body { /* Exemplo se header fixo tem 70px de altura aqui */
+        /* padding-top: 70px; */
+    }
+    /* html { scroll-padding-top: 70px; } */
+
+    .header {
+        padding: 60px 15px;
+        margin: 15px;
+        min-height: auto;
+    }
+    .header h1 {
+        font-size: 2.2em;
+    }
+    .header .subtitle {
+        font-size: 1.2em;
+    }
+    .header .header-links a {
+        font-size: 1em;
+        padding: 8px 18px;
+    }
+
+    .section-title {
+        font-size: 2em;
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    .projetos-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .caixa {
+        max-width: 90%; /* Card ocupa mais da largura */
+        margin: 0 0 25px 0; /* Apenas margem inferior, pois o gap do container foi removido com flex-direction: column */
+    }
+    .caixa_img {
+        height: 200px; /* Imagem um pouco menor */
+    }
+
+    .contato-secao {
+        padding: 40px 15px;
+        margin: 15px;
+    }
+    .contato_cards_container {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+    .contato_card_item {
+        max-width: 90%;
+    }
+
+    .footer {
+        font-size: 0.85em;
+        padding: 20px 15px;
+        margin-top: 30px;
+    }
+}
+
+/* Celulares Pequenos (Bootstrap 'sm' breakpoint: <576px) */
+@media (max-width: 575.98px) {
+    body { /* Exemplo se header fixo tem 60px de altura aqui */
+        /* padding-top: 60px; */
+    }
+    /* html { scroll-padding-top: 60px; } */
+
+    .header {
+        padding: 50px 10px;
+        margin: 10px;
+    }
+    .header h1 {
+        font-size: 2em;
+    }
+    .header .subtitle {
+        font-size: 1.1em;
+    }
+    .header .header-links {
+        gap: 10px; /* Menor gap para os links do header */
+    }
+    .header .header-links a {
+        font-size: 0.9em;
+        padding: 8px 15px; /* Botões um pouco menores */
+        /* Se quiser empilhar os links do header em telas muito pequenas: */
+        /* display: block; */
+        /* width: 80%; */
+        /* margin: 5px auto; */
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    .caixa {
+        max-width: 95%;
+    }
+    .caixa_img {
+        height: 180px; /* Altura da imagem do projeto */
+    }
+    .caixa_texto h3 {
+        font-size: 1.25em;
+    }
+    .caixa_texto p {
+        font-size: 0.9em;
+    }
+    .caixa_texto .btn {
+        font-size: 0.9em;
+        padding: 0.4rem 0.8rem; /* Padding menor no botão do card */
+    }
+
+    .contato_card_item h3 {
+        font-size: 1.4em;
+    }
+    .contato_card_item p {
+        font-size: 0.9em;
+    }
+    .contato_card_item .btn {
+        font-size: 0.9em;
+        padding: 0.5rem 1rem;
+    }
+}
